@@ -828,7 +828,7 @@ select:focus,input[type="text"]:focus{border-color:var(--accent);outline:none;bo
   }
   var ENVELOPE = '<svg viewBox="0 0 120 84" aria-hidden="true"><rect x="4" y="10" width="112" height="70" rx="10" fill="var(--butter)" stroke="var(--accent)" stroke-width="3"/><path d="M8 16l52 36 52-36" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round"/><path d="M60 58c-6-4-13-8-13-14a6 6 0 0 1 13-3 6 6 0 0 1 13 3c0 6-7 10-13 14z" fill="var(--accent)"/></svg>';
   var GROUPS = [["yellow", "노랑"], ["blue", "파랑"], ["orange", "주황"], ["green", "초록"]];
-  var GNAME = { yellow: "노랑", blue: "파랑", orange: "주황" };
+  var GNAME = { yellow: "노랑", blue: "파랑", orange: "주황", green: "초록" };
   var chosen = { wall: "all", after: "all" }; /* 화면별로 고른 보낸 사람 */
   function cards(list, key) {
     var present = GROUPS.filter(function (g) { return list.some(function (m) { return m.group === g[0]; }); });
