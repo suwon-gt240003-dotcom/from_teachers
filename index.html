@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>수능 날, 곁에서 응원할게요</title>
-<meta name="description" content="선생님과 후배, 부모님이 쓴 응원 편지를 읽어 보세요. 수능 날 준비물과 시간표도 함께 담았어요.">
+<meta name="description" content="선생님들이 쓴 응원 편지를 읽어 보세요. 수능 날 준비물과 시간표도 함께 담았어요.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="2027학년도 수능 응원">
 <meta property="og:title" content="수능 날, 곁에서 응원할게요">
-<meta property="og:description" content="선생님과 후배, 부모님이 쓴 응원 편지를 읽어 보세요. 수능 날 준비물과 시간표도 함께 담았어요.">
+<meta property="og:description" content="선생님들이 쓴 응원 편지를 읽어 보세요. 수능 날 준비물과 시간표도 함께 담았어요.">
 <meta property="og:image" content="https://dossamlab.github.io/suneung-cheer-kit/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -230,10 +230,10 @@ select:focus,input[type="text"]:focus{border-color:var(--accent);outline:none;bo
 .msg:nth-child(4n+2){transform:rotate(.6deg)}
 .msg:nth-child(4n+3){transform:rotate(-.3deg)}
 .msg:nth-child(4n){transform:rotate(.7deg)}
-.g-teacher{background:var(--butter);border-color:#FAE5A8}
-.g-junior{background:var(--skyc);border-color:#CFE1F2}
-.g-parent{background:var(--blush);border-color:#F8CFC8}
-.g-other{background:var(--mint);border-color:#CBE5D0}
+.g-yellow{background:var(--butter);border-color:#FAE5A8}
+.g-blue{background:var(--skyc);border-color:#CFE1F2}
+.g-orange{background:var(--blush);border-color:#F8CFC8}
+.g-green{background:var(--mint);border-color:#CBE5D0}
 .msg::before{content:"";position:absolute;top:-11px;left:50%;width:72px;height:22px;transform:translateX(-50%) rotate(-2deg);background:rgba(235,175,140,.6);border-radius:2px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .msg p{font-family:var(--hand);font-size:1.3rem;line-height:1.6;letter-spacing:.01em;color:#2C221A;margin:0 0 16px;overflow-wrap:anywhere;white-space:pre-line}
 .msg .from{display:flex;justify-content:flex-end;align-items:center;gap:8px;font-family:var(--hand);font-size:1.2rem;font-weight:700}
@@ -338,9 +338,9 @@ select:focus,input[type="text"]:focus{border-color:var(--accent);outline:none;bo
 <main class="wrap">
   <!-- 응원 -->
   <section role="tabpanel" id="wall" aria-labelledby="tab-wall">
-    <h2>선생님, 후배, 부모님이 보낸 편지</h2>
+    <h2>선생님들이 보낸 편지</h2>
     <p class="lede">함께 지낸 사람들이 한 장씩 써서 붙였어요. <span id="wall-count"></span></p>
-    <p class="write" id="write" hidden><a class="btn primary" id="write-link" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>편지 남기기</a><span>선생님, 후배, 학부모님 누구나 쓸 수 있어요.</span></p>
+    <p class="write" id="write" hidden><a class="btn primary" id="write-link" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>편지 남기기</a><span>선생님들 누구나 쓸 수 있어요.</span></p>
     <div id="wall-list"></div>
   </section>
 
@@ -827,14 +827,14 @@ select:focus,input[type="text"]:focus{border-color:var(--accent);outline:none;bo
     return rows;
   }
   var ENVELOPE = '<svg viewBox="0 0 120 84" aria-hidden="true"><rect x="4" y="10" width="112" height="70" rx="10" fill="var(--butter)" stroke="var(--accent)" stroke-width="3"/><path d="M8 16l52 36 52-36" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linejoin="round"/><path d="M60 58c-6-4-13-8-13-14a6 6 0 0 1 13-3 6 6 0 0 1 13 3c0 6-7 10-13 14z" fill="var(--accent)"/></svg>';
-  var GROUPS = [["teacher", "선생님"], ["junior", "후배"], ["parent", "부모님"], ["other", "그 밖"]];
-  var GNAME = { teacher: "선생님", junior: "후배", parent: "부모님" };
+  var GROUPS = [["yellow", "노랑"], ["blue", "파랑"], ["orange", "주황"], ["green", "초록"]];
+  var GNAME = { yellow: "노랑", blue: "파랑", orange: "주황" };
   var chosen = { wall: "all", after: "all" }; /* 화면별로 고른 보낸 사람 */
   function cards(list, key) {
     var present = GROUPS.filter(function (g) { return list.some(function (m) { return m.group === g[0]; }); });
     if (chosen[key] !== "all" && !present.some(function (g) { return g[0] === chosen[key]; })) chosen[key] = "all";
     var sel = chosen[key];
-    var chips = present.length < 2 ? "" : '<div class="chips" role="group" aria-label="보낸 사람으로 골라 보기">' + [["all", "전체"]].concat(present).map(function (g) {
+    var chips = present.length < 2 ? "" : '<div class="chips" role="group" aria-label="색상 골라 보기">' + [["all", "전체"]].concat(present).map(function (g) {
       var n = g[0] === "all" ? list.length : list.filter(function (m) { return m.group === g[0]; }).length;
       return '<button type="button" class="chip" data-key="' + key + '" data-g="' + g[0] + '" aria-pressed="' + (sel === g[0]) + '">' + (g[0] === "all" ? "" : '<i class="g-' + g[0] + '"></i>') + g[1] + ' <span class="n">' + n + "</span></button>";
     }).join("") + "</div>";
